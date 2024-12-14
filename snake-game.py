@@ -2,10 +2,10 @@ import turtle  # Import the Turtle Graphics module
 import random
 
 # Define program constants
-WIDTH = 500
-HEIGHT = 500
-DELAY = 100  # Milliseconds
-FOOD_SIZE = 10
+WIDTH = 800
+HEIGHT = 600
+DELAY = 200  # Milliseconds
+FOOD_SIZE = 30
 
 offsets = {
     "up": (0, 20),
@@ -103,7 +103,9 @@ def reset():
 screen = turtle.Screen()
 screen.setup(WIDTH, HEIGHT)  # Set the dimensions of the Turtle Graphics window.
 screen.title("Snake")
-screen.bgcolor("pink")
+screen.bgpic("assets/bg2.gif")
+screen.register_shape("assets/snake-food-32x32.gif")
+screen.register_shape("assets/snake-head-20x20.gif")
 screen.tracer(0)  # Turn off automatic animation.
 
 # Event Handlers
@@ -112,7 +114,8 @@ bind_direction_keys()
 
 # Create a turtle to do your bidding
 stamper = turtle.Turtle()
-stamper.shape("square")
+stamper.shape("circle")
+stamper.color("green")
 stamper.penup()
 
 # Create snake as a list of coordinate pairs.
@@ -122,8 +125,7 @@ score = 0
 
 # Food
 food = turtle.Turtle()
-food.shape("circle")
-food.color("red")
+food.shape("assets/snake-food-32x32.gif")
 food.shapesize(FOOD_SIZE / 20)
 food.penup()
 
